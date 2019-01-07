@@ -1,0 +1,5 @@
+<div class="grid">
+  <div *ngFor="let _x of x" style="width: 20px; height: 20px;" id="{{_x}}">
+    <div *ngFor="let _y of y" style="width: 20px; height: 20px;" id="{{_x}}{{_y}}" [ngClass]="{'aspirateur': _id == _x.toString() + _y.toString()}"></div>
+  </div>
+</div>

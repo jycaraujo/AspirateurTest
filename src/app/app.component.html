@@ -1,46 +1,113 @@
-div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <form class="form-horizontal">
-      <fieldset>
-
-        <!-- Form Name -->
-        <legend>Elevator Resistance Problem</legend>
-
+<div class="settings">
+	<br/>
 		<div class="row">
-			<div class="col-md-4">
-			<!-- Text input-->
-				<div class="form-group">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<form class="form-horizontal">
+						<fieldset>
+							<!-- Form Name -->
+							<legend>Aspirateur Challenge</legend>
+			
 					<div class="row">
-						<label class="col-md-4 control-label" for="textinput">Number of elevators</label>
-						  <div class="col-md-8">
-							<input [(ngModel)]="nm_elevators" id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
-						  </div>
+						<div class="col-md-4">
+						<!-- Text input-->
+							<div class="form-group">
+								<div class="row">
+									<label class="col-md-4 control-label" for="textinput">WIDTH</label>
+										<div class="col-md-8">
+										<input [(ngModel)]="coord_x" id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+										</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+						<!-- Text input-->
+							<div class="form-group">
+								<div class="row">
+										<label class="col-md-4 control-label" for="textinput">HEIGHT</label>
+										<div class="col-md-8">
+										<input [(ngModel)]="coord_y" id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+										</div>
+								</div>				
+							 </div>
+						</div>
+						<div class="col-md-4">
+								
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-			<!-- Text input-->
-				<div class="form-group">
 					<div class="row">
-						  <label class="col-md-4 control-label" for="textinput">Number of floors</label>
-						  <div class="col-md-8">
-							<input [(ngModel)]="nm_floors" id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
-						  </div>
-					</div>				
-				 </div>
-			</div>
-			<div class="col-md-4"> 
-				<!-- Button -->
-				<div class="form-group">
-				  <div class="col-md-8">
-					<button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="createElevators()">Ok</button>
-				  </div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<div class="row">
+									<label class="col-md-4 control-label" for="textinput">X</label>
+										<div class="col-md-8">
+										<input [(ngModel)]="initial_x" id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+										</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<div class="row">
+									<label class="col-md-4 control-label" for="textinput">Y</label>
+										<div class="col-md-8">
+										<input [(ngModel)]="initial_y" id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+										</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<div class="row">
+									<label class="col-md-4 control-label" for="textinput">DIRECTION</label>
+										<div class="col-md-8">
+												<select class="custom-select" (change)="changeDirection($event)">
+														<option value="N" selected>NORTH</option>
+														<option value="S">SOUTH</option>
+														<option value="W">WEST</option>
+														<option value="E">EAST</option>
+													</select>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+						</fieldset>
+					</form>
 				</div>
+				<div class="col-md-1"></div>
 			</div>
-		</div>
-      </fieldset>
-    </form>
-  </div>
-  <div class="col-md-1"></div>
+			
+			<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-md-6">
+									
+							</div>
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-4">
+											
+									</div>
+									<div class="col-md-2">
+											<button class="btn btn-link" value="D" (click)="changeOrientation($event)">RIGHT</button>
+									</div>
+									<div class="col-md-2">
+											<button class="btn btn-link" value="E" (click)="changeOrientation($event)">LEFT</button>
+									</div>
+									<div class="col-md-2">
+											<button class="btn btn-primary" value="A" (click)="changeOrientation($event)">WALK</button>
+									</div>
+									<div class="col-md-2">
+											<button class="btn btn-dark" value="R" (click)="changeOrientation($event)">RESET</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<br/>
 </div>
+<br/>
+<app-grid [coord_y]="coord_y" [coord_x]="coord_x" [initial_x]="initial_x" [initial_y]="initial_y"></app-grid>		
