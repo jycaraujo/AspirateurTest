@@ -89,8 +89,8 @@ export class GridComponent implements OnInit, OnChanges {
       });
     }
     if(!isNullOrUndefined(this.initial_y) && !isNullOrUndefined(this.initial_x)){
-      this.current.position.x = parseInt(this.initial_x);
-      this.current.position.y = parseInt(this.initial_y);
+      this.current.position.x = this.initial_x;
+      this.current.position.y = this.initial_y;
       this._id = this.current.position.x.toString()+this.current.position.y.toString();
     }
     else{
@@ -104,7 +104,7 @@ export class GridComponent implements OnInit, OnChanges {
       if(direction == 'A'){
         let temp_x = this.current.position.x+this.current.vector.x;
         let temp_y = this.current.position.y+this.current.vector.y;
-        if(temp_x < 0 || temp_x > parseInt(this.coord_x) || temp_y < 0 || temp_y > parseInt(this.coord_y)){
+        if(temp_x < 0 || temp_x > this.coord_x || temp_y < 0 || temp_y > this.coord_y){
           throw "Out of bounds";
         }
         else{
@@ -139,10 +139,10 @@ export class GridComponent implements OnInit, OnChanges {
     this.x = [];
     let temp_x = this.coord_x;
     let temp_y = this.coord_y;
-    for(let i = 0; i<parseInt(temp_x); i++){
+    for(let i = 0; i<temp_x; i++){
       this.x.push(i);
     }
-    for(let i = parseInt(temp_y)-1; i>= 0; i--){
+    for(let i = temp_y-1; i>= 0; i--){
       this.y.push(i);
     }
     resolve();
