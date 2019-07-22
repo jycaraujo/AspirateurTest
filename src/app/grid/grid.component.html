@@ -1,5 +1,8 @@
 <div class="grid">
-  <div *ngFor="let _x of x" style="width: 1.5em; height: 1.5em;" id="{{_x}}">
-    <div *ngFor="let _y of y" style="width: 1.5em; height: 1.5em;" id="{{_x}}{{_y}}" [ngClass]="{'aspirateur': _id == _x.toString() + _y.toString()}"></div>
+  <div *ngFor="let x of getXAxis()"
+       style="width: 1.5em; height: 1.5em;">
+    <div *ngFor="let y of getYAxis()"
+         style="width: 1.5em; height: 1.5em;"
+         [ngClass]="{'aspirateur': this.position.x === x && this.position.y === y}"></div>
   </div>
 </div>

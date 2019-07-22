@@ -14,9 +14,9 @@
 								<!-- Text input-->
 									<div class="form-group">
 										<div class="row">
-											<label class="col-md-4 control-label" for="textinput">MAX X</label>
+											<label class="col-md-4 control-label" for="xMax">MAX X</label>
 												<div class="col-md-8">
-												<input [(ngModel)]="coord_x" id="textinput" name="textinput" type="number" placeholder="" class="form-control input-md">
+												<input [(ngModel)]="xMax" id="xMax" name="xMax" type="number" placeholder="" class="form-control input-md">
 												</div>
 										</div>
 									</div>
@@ -25,9 +25,9 @@
 								<!-- Text input-->
 									<div class="form-group">
 										<div class="row">
-												<label class="col-md-4 control-label" for="textinput">MAX Y</label>
+												<label class="col-md-4 control-label" for="yMax">MAX Y</label>
 												<div class="col-md-8">
-												<input [(ngModel)]="coord_y" id="textinput" name="textinput" type="number" placeholder="" class="form-control input-md">
+												<input [(ngModel)]="yMax" id="yMax" name="yMax" type="number" placeholder="" class="form-control input-md">
 												</div>
 										</div>				
 									</div>
@@ -40,9 +40,9 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<div class="row">
-											<label class="col-md-4 control-label" for="textinput">X</label>
+											<label class="col-md-4 control-label" for="x">X</label>
 												<div class="col-md-8">
-												<input [(ngModel)]="initial_x" id="textinput" name="textinput" type="number" placeholder="" class="form-control input-md">
+												<input [(ngModel)]="position.x" id="x" name="x" type="number" placeholder="" class="form-control input-md">
 												</div>
 										</div>
 									</div>
@@ -50,9 +50,9 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<div class="row">
-											<label class="col-md-4 control-label" for="textinput">Y</label>
+											<label class="col-md-4 control-label" for="y">Y</label>
 												<div class="col-md-8">
-												<input [(ngModel)]="initial_y" id="textinput" name="textinput" type="number" placeholder="" class="form-control input-md">
+												<input [(ngModel)]="position.y" id="y" name="y" type="number" placeholder="" class="form-control input-md">
 												</div>
 										</div>
 									</div>
@@ -60,13 +60,13 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<div class="row">
-											<label class="col-md-4 control-label" for="textinput">DIRECTION</label>
+											<label class="col-md-4 control-label" for="angle">DIRECTION</label>
 												<div class="col-md-8">
-														<select class="custom-select" (change)="changeDirection($event)">
-																<option value="N" selected>NORTH</option>
-																<option value="S">SOUTH</option>
-																<option value="W">WEST</option>
-																<option value="E">EAST</option>
+														<select class="custom-select" id="angle" (change)="position.angle = Direction[$event.target.value]">
+																<option [value]="Direction.N" selected>NORTH</option>
+																<option [value]="Direction.S">SOUTH</option>
+																<option [value]="Direction.W">WEST</option>
+																<option [value]="Direction.E">EAST</option>
 															</select>
 												</div>
 										</div>
@@ -92,16 +92,16 @@
 											
 									</div>
 									<div class="col-md-2">
-											<button class="btn btn-link" value="E" (click)="changeOrientation($event)">LEFT</button>
+											<button class="btn btn-link" value="E" (click)="position.execute(Command.LEFT)">LEFT</button>
 									</div>
 									<div class="col-md-2">
-											<button class="btn btn-link" value="D" (click)="changeOrientation($event)">RIGHT</button>
+											<button class="btn btn-link" value="D" (click)="position.execute(Command.RIGHT)">RIGHT</button>
 									</div>
 									<div class="col-md-2">
-											<button class="btn btn-primary" value="A" (click)="changeOrientation($event)">WALK</button>
+											<button class="btn btn-primary" value="A" (click)="position.execute(Command.ADVANCE)">WALK</button>
 									</div>
 									<div class="col-md-2">
-											<button class="btn btn-dark" value="R" (click)="changeOrientation($event)">RESET</button>
+											<button class="btn btn-dark" value="R" (click)="position.reset()">RESET</button>
 									</div>
 								</div>
 							</div>
@@ -111,4 +111,4 @@
 			<br/>
 </div>
 <br/>
-<app-grid [coord_y]="coord_y" [coord_x]="coord_x" [initial_x]="initial_x" [initial_y]="initial_y"></app-grid>		
+<app-grid [position]="position" [xMax]="xMax" [yMax]="yMax"></app-grid>
